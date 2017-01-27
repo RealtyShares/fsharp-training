@@ -1,5 +1,7 @@
+# About
+This repo has some code exercises Alex worked on during mentoship session with Mathias. All relevant and somewhat relevant info is compiled below. The ultimate goal of this repo is to assist RealtyShares devs with learning F# so please feel free to modify the repo as much as you want
 
-#Reading materials
+# Reading materials
 
 Given our discussion on functions, pipelines and composition, I think this would be good reading material:
 https://fsharpforfunandprofit.com/posts/thinking-functionally-intro/
@@ -18,12 +20,12 @@ https://fsharpforfunandprofit.com/posts/concurrency-async-and-parallel/
 
 
 
-*****
-Contact - Mathias - mathias.brandewinder@gmail.com. Important - before reaching out to him please confirm with your manger
+# Contact
+Mathias - mathias.brandewinder@gmail.com. Important - before reaching out to him please confirm with your manger
 
-*******
 
-Topics to look into (kudos to Tracy for coming up with the list): 
+# Topics to look into 
+(kudos to Tracy for coming up with the list): 
 - Pattern matching (particularly over DU's, tuples, lists, and perhaps records). Active patterns are less important but would be good to touch on if time permits.
 - Async computation expressions and the FSharp.Async core library. 
 - Railway-oriented programming.
@@ -36,7 +38,7 @@ Topics to look into (kudos to Tracy for coming up with the list):
 
 * I understand monads/applicative functors are pretty abstract subjects. It's sufficient to understand how to use common ones like async, seq, maybe and either.
 
-Relevant libraries:
+## Relevant libraries:
 
 We make relatively heavy use of the following F# libraries. There's a conceptual learning curve associated with each, so it would be good to work through a few small Katas that incorporate them in some way:
 
