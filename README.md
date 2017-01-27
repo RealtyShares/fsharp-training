@@ -1,5 +1,5 @@
 # About
-This repo has some code exercises Alex worked on during mentoship session with Mathias. All relevant and somewhat relevant info is compiled below. The ultimate goal of this repo is to assist RealtyShares devs with learning F# so please feel free to modify the repo as much as you want
+This repo has some code exercises Alex worked on during mentorship sessions with Mathias. All relevant and somewhat relevant info is compiled below. The ultimate goal of this repo is to assist RealtyShares devs with learning F# so please feel free to modify the repo as much as you want
 
 # Reading materials
 
