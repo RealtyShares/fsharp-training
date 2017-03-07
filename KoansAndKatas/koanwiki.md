@@ -2,8 +2,8 @@
 We're exploring more ways to help the team get a stronger foundation of F#.  
 
 ###Goals
-There are some goals I would like to achieve, all of which are part of the greater vision of empowering others, which is a core value of RealtyShares:  
-1. Language or library fluency: A session could serve to provide a better understanding of how to use a group of specific functions or operators. 
+There are some goals we would like to achieve, all of which are part of the greater vision of empowering others, which is a core value of RealtyShares:  
+1. Language or library fluency: A session could serve to provide a better understanding of how to use a group of specific functions or operators.  
 2. Team knowledge of each other's strengths and weaknesses with functional programming. This helps with targeting further training and assignment of tasks.  
 3. Morale - This should be something that helps everyone remember that this is a great place to work, and feel valued on the team.
 
@@ -11,7 +11,7 @@ There are some goals I would like to achieve, all of which are part of the great
 Once every week, either Thursday or Friday, team members will meet in one of the conference rooms, or optionally online. The session must be fully user-friendly via Internet as we have remote people on the team. The session will exist on Google Calendar as a recurring weekly meeting. If this system proves popular and productive, we can even consider doing these more often than once per week.
 
 ###Hosts
-Each instance of the session will have a host. The host will be the one who chooses a programming problem for the team to solve, and also presides over the session as a whole. I don't want to have a rotating schedule of hosts, as that puts pressure to come up with problems to solve, and when it comes time for one person to host, they may not have had the inspiration to come up with an interesting challenge that would be good for the team, and therefore the quality would suffer. So the hosting should be on a voluntary basis.
+Each instance of the session will have a host. The host will be the one who chooses a programming problem for the team to solve, and also presides over the session as a whole. Having a fixed, rotating schedule of hosts, presents an issue where there is pressure to come up with problems to solve. So when it comes time for a given person to host, they may not have had the inspiration to come up with an interesting challenge that would be good for the team, and therefore the quality would suffer. So the hosting should be on a voluntary basis.
 
 ###Proposing a session
 If the Google Calendar session does not have a host yet, the name of that week's session will, instead of the topic name, contain "TBD". If someone wants to host and present their own session, they will pick one of the session that is marked as TBD, and then submit their proposed problem topic to Dan, with a rationale of why that topic is good for the team to practice on as a group. When Dan updates the calendar event with the name of the topic, that will be a confirmation of the session's agenda.   
