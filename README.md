@@ -76,7 +76,8 @@ https://www.youtube.com/watch?v=nxIRlf4AtcA
 * I understand monads/applicative functors are pretty abstract subjects. It's sufficient to understand how to use common ones like async, seq, maybe and either.
 
 3) Solve a few DoJos in https://github.com/RealtyShares/fsharp-training/blob/master/KoansAndKatas/koanwiki.md
-
+## Other resources:
+- [Fable](https://github.com/kunjee17/awesome-fable)
 
 ## Relevant libraries:
 
