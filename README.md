@@ -21,7 +21,7 @@ https://fsharpforfunandprofit.com/posts/thinking-functionally-intro/
 
 https://fsharpforfunandprofit.com/series/a-recipe-for-a-functional-app.html
 
-https://vimeo.com/100960317
+[Taking your craft seriously with F# - Tomas Petricek](https://vimeo.com/100960317)
 
 - Exploratory programming with FSI and the scripting environment
 
@@ -56,21 +56,23 @@ https://lorgonblog.wordpress.com/2008/04/05/catamorphisms-part-one/
 
 - Agents/MailboxProcessors, Actors
 
-https://www.youtube.com/watch?v=RiWXo_5CAvg
+[The Actor Model in F# and Akka.Net - Riccardo Terrell](https://www.youtube.com/watch?v=RiWXo_5CAvg)
 
 - DDD, ie. modeling a business domain using the F# type system
 
-https://www.youtube.com/watch?v=970nkg60lHs
+[Domain Modeling with Types - Ryan Riley](https://www.youtube.com/watch?v=970nkg60lHs)
 
 - Type Providers
 
-https://vimeo.com/104896802
+[Happily together: F# and SQL - Dmitry Morozov & Dmitry Sevastianov](https://vimeo.com/104896802)
 
 - Funcional Architecture
 
-https://vimeo.com/161131920
+[Functional Architecture - Mark Seemann](https://vimeo.com/161131920)
 
-https://www.youtube.com/watch?v=nxIRlf4AtcA
+[Functional Programming design patterns - Scott Wlaschin](https://www.youtube.com/watch?v=E8I19uA-wGY)
+
+[Code Review/Refactor Live - Scott Wlaschin](https://www.youtube.com/watch?v=nxIRlf4AtcA)
 
 
 * I understand monads/applicative functors are pretty abstract subjects. It's sufficient to understand how to use common ones like async, seq, maybe and either.
@@ -85,15 +87,15 @@ We make relatively heavy use of the following F# libraries. There's a conceptual
 
 - Suave (for HTTP/JSON APIs)
 
-https://www.youtube.com/watch?v=ujxwW6fFXOc
+[Suave from Scratch - Henrik Feldt](https://www.youtube.com/watch?v=ujxwW6fFXOc)
 
-https://vimeo.com/171704578
+[Functional Web Applications using F# and Suave - Tomas Jansson](https://vimeo.com/171704578)
 
 - FSharpx.Validation (for general data validation, particularly the applicative operators: <!> <*> <* *>)
 
 - FParsec (for basic parsing tasks)
 
-https://vimeo.com/171704565
+[Understanding parser combinators: a deep dive - Scott Wlaschin](https://vimeo.com/171704565)
 
 
 ## Chargeable options (Important - please confirm with your manger)
