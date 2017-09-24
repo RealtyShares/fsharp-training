@@ -3,3 +3,11 @@
 ################################################################################
 
 /FSharpTraining
+
+# paket ignores
+
+.paket/*
+!.paket/paket.bootstrapper.exe
+
+packages
+paket-files
