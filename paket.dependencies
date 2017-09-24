@@ -12,6 +12,7 @@ nuget Hopac
 nuget Suave
 nuget Newtonsoft.JSON
 nuget Http.fs
+nuget FParsec
 
 group Build-Tools
     source https://www.nuget.org/api/v2
