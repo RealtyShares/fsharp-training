@@ -1,46 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project ToolsVersion="14.0" DefaultTargets="Build">
   <PropertyGroup>
+    <Name>FsharpTraining</Name>
+    <AssemblyName>FsharpTraining</AssemblyName>
+    <RootNamespace>ConsoleApplication18</RootNamespace>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>45c187ff-cde1-49d2-8b9e-6702dca14600</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApplication18</RootNamespace>
-    <AssemblyName>FsharpTraining</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.0.0.1</TargetFSharpCoreVersion>
-    <Name>FsharpTraining</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>Full</DebugType>
     <Optimize>false</Optimize>
     <Tailcalls>false</Tailcalls>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Debug\ConsoleApplication18.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>PdbOnly</DebugType>
     <Optimize>true</Optimize>
     <Tailcalls>true</Tailcalls>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <WarningLevel>3</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DocumentationFile>bin\Release\ConsoleApplication18.XML</DocumentationFile>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  <PropertyGroup>
-    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
-  </PropertyGroup>
-  <Choose>
+  <ItemGroup>
+    <None Include="Training.fsx" />
+    <None Include="Notes-Session1.fsx" />
+    <None Include="Training2.fsx" />
+    <None Include="GuidedScript.fsx" />
+    <None Include="Training3.fsx" />
+    <None Include="Training4.fsx" />
+    <None Include="Parser.fsx" />
+    <None Include="async.fsx" />
+    <None Include="choice.fsx" />
+    <None Include="validation-part1.fsx">
+    <None Include="validation-part2.fsx">
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="'$(VisualStudioVersion)' == '11.0'">
       <PropertyGroup Condition="Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets')">
         <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
@@ -52,32 +65,8 @@
       </PropertyGroup>
     </Otherwise>
   </Choose>
-  <Import Project="$(FSharpTargetsPath)" />
-  <ItemGroup>
-    <None Include="Training.fsx" />
-    <None Include="Notes-Session1.fsx" />
-    <None Include="Training2.fsx" />
-    <None Include="GuidedScript.fsx" />
-    <None Include="Training3.fsx" />
-    <None Include="Training4.fsx" />
-    <None Include="Parser.fsx" />
-    <None Include="async.fsx" />
-    <None Include="choice.fsx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-  </ItemGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <Choose>
+  <Import Project="$(FSharpTargetsPath)" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FParsec">
@@ -93,7 +82,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FSharp.Control.AsyncSeq">
@@ -104,7 +93,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FSharp.Core">
@@ -115,7 +104,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FSharpx.Async">
@@ -126,7 +115,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FSharpx.Collections">
@@ -137,7 +126,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="FSharpx.Extras">
@@ -148,7 +137,7 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Choose>
+  <Choose xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
