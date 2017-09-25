@@ -390,8 +390,17 @@ validatePerson''' data // <-- Success! Now, with a more strongly-typed domain mo
 validatePerson''' badData // <-- Failure! A whole mess of errors
 validatePerson''' betterData // <-- Failure! Fewer errors
 
-// Congratulations! You've learned applicative-style validation. Have a free monad!
+// Congratulations! 
 
-// Next Step: An introduction to the standard Validation library in validation-part2.fsx
+// You've learned applicative-style validation. Have a free monad!
+// Applicative style is one of the most elegant patterns in all of programming.
+// Your functional programming skills have truly leveled-up!
+
+// Additional commentary: there is a method to all this madness. 
+// 1) The "someFunction <!> arg1 <*> arg2 <*> arg3" syntax is in fact a well-known functional programming idiom called, "applicative style"
+// 2) ValidationResult<_,_> and "apply" together form an Applicative Functor. This is another one of those category theory ideas we borrowed from Haskell. 
+
+// Next Step: An introduction to the standard Validation library in validation-part2.fsx,
+// and perhaps expand on the relation between Applicatives and Monads and their general semantics.
 
 
