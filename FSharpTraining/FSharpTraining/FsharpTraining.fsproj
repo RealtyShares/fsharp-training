@@ -62,6 +62,7 @@
     <None Include="Training4.fsx" />
     <None Include="Parser.fsx" />
     <None Include="async.fsx" />
+    <None Include="choice.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
