@@ -242,4 +242,156 @@ validatePerson'' betterData // <-- Failure! Fewer errors
 
 // Step 5) We're almost there. We just need to go a little deeper down the rabbit hole. 
 // Can we make "tryGetValue" more generic? 
-// checkout out validation-part2.fsx   
+
+// Let's write a reusable "validator" function, that takes a true or value predicate and 
+// 1. returns a Success when the predicate is true
+// 2. returns a Failure with an error message when the predicate is false
+let validator predicate errorMessage value : ValidationResult<_,_> =
+    if predicate value 
+        then Success value
+        else Failure (List.singleton errorMessage)
+
+// Let's write another variant of "validator" function, that "maps" the value to an optional value of a different type 
+// 1. returns a Success when the map function returns Some value
+// 2. returns a Failure with an error message when the function maps to None
+let validatorM fmap error value : ValidationResult<_,_> =
+    let result = fmap value
+    match result with
+    | Some value -> Success value
+    | None -> Failure (List.singleton error)
+
+// A validator to pull a required field out of a data map
+let requiredValue key data =
+    data |> validatorM (Map.tryFind key) (sprintf "%s is required" key)
+
+// A validator to pull and optional field out of a data map
+let optionalValue key data =
+    data |> validatorM (Map.tryFind key >> Some) ("")
+
+open System.Text.RegularExpressions
+// A validator that matches a regular expresion
+let matchesRegex (regex:Regex) msg v = 
+    validator regex.IsMatch msg v
+
+// a validator that checks to make sure a phone number string is in the correct format
+// notice the return type is a PhoneNumber rather than a string
+let isPhoneNumber phoneNumber =
+    let regex = Regex("^(1\-)?((\(\d{3}\) ?)|([\d\w]{3}-))?[\d\w]{3}-[\d\w]{4}$",RegexOptions.IgnoreCase)
+    phoneNumber 
+    |> matchesRegex regex "not a valid phone number"
+    |> Choice.map PhoneNumber
+
+// a validator that checks to make sure an email string is in the correct format
+// notice the return type is a EmailAddress rather than a string
+let isEmailAddress email =
+    let regex = Regex("^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$",RegexOptions.IgnoreCase)
+    email 
+    |> matchesRegex regex "not a valid email address"
+    |> Choice.map EmailAddress
+
+
+requiredValue "firstName" data // <-- Choice1Of2 "Tracy"
+requiredValue "firstName" badData' // <-- Choice2Of2 ["firstName is required"]
+optionalValue "phone" data // <-- Choice1Of2 (Some "1-800-REA-LTYS")
+optionalValue "notAKey" data // <-- Choicee1Of2 None
+isPhoneNumber "1-800-REA-LTYS" // <-- Choice1Of2 (PhoneNumber "1-800-REA-LTYS")
+isPhoneNumber "nope" // <-- Chioce2Of2 "not a valid phone number"
+isEmailAddress "contact@realtyshares.com" // <-- Choice1Of2 (EmailAddress "contact@realtyshares.com")
+isEmailAddress "nope" // <-- Chioce2Of2 "not a valid email address"
+
+
+// can we combine optionalValue and isPhoneNumber? Yes, but eww...
+let validatePhoneNumber' data =
+    data 
+    |> optionalValue "phone"
+    |> Choice.bind (function 
+        | Some phoneNumber ->
+            match isPhoneNumber phoneNumber with
+            | Success p -> Success (Some p)
+            | Failure msg -> Failure msg
+        | None -> 
+            Success None)
+
+validatePhoneNumber' data // <-- Choice1Of2 (Some (PhoneNumber "1-800-REA-LTYS"))
+validatePhoneNumber' badData' // <-- Choice1Of2 None
+validatePhoneNumber' (Map.ofList ["phone", "not a phone number"]) // <-- Choice2Of2 "not a valid phone number"
+
+// how about a ChoiceOption monad?
+module ChoiceOption =
+    let bind fn =
+        Choice.bind (function 
+        | Some value -> fn value
+        | None -> Success None)
+
+// a little better    
+let validatePhoneNumber'' data =
+    data 
+    |> optionalValue "phone"
+    |> ChoiceOption.bind (isPhoneNumber >> Choice.map Some)
+
+// try it out
+validatePhoneNumber'' data // <-- Choice1Of2 (Some (PhoneNumber "1-800-REA-LTYS"))
+validatePhoneNumber'' badData' // <-- Choice1Of2 None
+validatePhoneNumber'' (Map.ofList ["phone", "not a phone number"]) // <-- Choice2Of2 "not a valid phone number"
+
+
+// let's make a new combinator
+let andAlso validate = ChoiceOption.bind (validate >> Choice.map Some)
+
+// Third time's the charm. Good enough!    
+let validatePhoneNumber''' data =
+    data 
+    |> optionalValue "phone"
+    |> andAlso isPhoneNumber
+
+// we can also use "point-free" style
+let validateEmail''' =
+    optionalValue "email"
+    >> andAlso isEmailAddress
+
+// now let's implement validatePerson one more time using a stronger domain model that uses PhoneNumbers and EmailAddresses
+type Person' = 
+    { firstName : string
+      lastName : string
+      address1 : string
+      address2 : string option
+      city : string
+      state : string
+      zip: string
+      phone : PhoneNumber option 
+      email : EmailAddress option }
+
+let validatePerson''' (data:Map<string,string>) =
+    (fun firstName lastName 
+         address1 address2 city state zip
+         phone email ->
+        { firstName = firstName
+          lastName = lastName
+          address1 = address1
+          address2 = address2 // <-- notice address2 is a string option this time
+          city = city
+          state = state
+          zip = zip
+          phone = phone // <-- notice phone is a PhoneNumber option, just like the domain model expects
+          email = email // <-- notice email is an EmailAddress option, just like the domain model expects 
+          })
+    <!> requiredValue "firstName" data
+    <*> requiredValue "lastName" data
+    <*> requiredValue "address1" data
+    <*> optionalValue "address2" data
+    <*> requiredValue "city" data
+    <*> requiredValue "state" data
+    <*> requiredValue "zip" data
+    <*> validatePhoneNumber''' data
+    <*> validateEmail''' data
+    
+// let's test it!
+validatePerson''' data // <-- Success! Now, with a more strongly-typed domain model!
+validatePerson''' badData // <-- Failure! A whole mess of errors
+validatePerson''' betterData // <-- Failure! Fewer errors
+
+// Congratulations! You've learned applicative-style validation. Have a free monad!
+
+// Next Step: An introduction to the standard Validation library in validation-part2.fsx
+
+
