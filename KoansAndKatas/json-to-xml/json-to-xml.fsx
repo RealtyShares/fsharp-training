@@ -24,3 +24,5 @@ let emails =
     File.ReadAllLines("enron.json")
     |> Seq.map (fun line -> JsonConvert.DeserializeObject<EmailRecord> line)
     |> Seq.toArray
+    
+let xmlEscape txt = System.Security.SecurityElement.Escape(txt)
